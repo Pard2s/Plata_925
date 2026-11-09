@@ -945,7 +945,7 @@
         try {
           const { data, error } = await supabaseClient
             .storage
-            .from("joyas")
+            .from("JOYAS")
             .upload(objectPath, file, {
               cacheControl: "3600",
               contentType: file.type,
@@ -957,7 +957,7 @@
 
           const { data: publicData } = supabaseClient
             .storage
-            .from("joyas")
+            .from("JOYAS")
             .getPublicUrl(data.path);
 
           uploadedProductImage = {
