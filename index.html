@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f9fafb">
   <meta name="description" content="Descubre piezas de joyería seleccionadas con cuidado.">
-  <title>INTELIA | Piezas para atesorar</title>
+    <title>Joyería | Piezas para atesorar</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link
@@ -64,13 +64,13 @@
         <a class="transition hover:text-black" href="#trustBar">Envíos y pagos</a>
       </nav>
 
-      <a href="#top" class="col-start-2 text-center" aria-label="INTELIA, inicio">
-        <span class="font-editorial text-[22px] font-normal tracking-[0.17em] text-[#292721] sm:text-2xl">INTELIA</span>
+            <a href="#top" class="col-start-2 text-center" aria-label="Joyería, inicio">
+                <span class="font-editorial text-[22px] font-normal tracking-[0.17em] text-[#292721] sm:text-2xl">JOYERÍA</span>
         <span class="mt-0.5 block text-[8px] uppercase tracking-[0.28em] text-[#827d73]">Piezas para atesorar</span>
       </a>
 
       <div class="col-start-3 flex items-center justify-self-end gap-3 sm:gap-5">
-        <a href="https://wa.me/525611717050" target="_blank" rel="noopener noreferrer" class="hidden text-[10px] uppercase tracking-[0.14em] text-[#514e47] transition hover:text-black sm:inline" aria-label="Contactar con INTELIA por WhatsApp">INTELIA</a>
+                <a href="https://wa.me/525611717050" target="_blank" rel="noopener noreferrer" class="hidden text-[10px] uppercase tracking-[0.14em] text-[#514e47] transition hover:text-black sm:inline" aria-label="Contactar con la joyería por WhatsApp">Atención</a>
         <button
           id="openCartButton"
           type="button"
@@ -91,7 +91,7 @@
     <nav class="flex justify-center gap-6 overflow-x-auto border-t border-[#efebe5] px-4 py-2.5 text-[9px] uppercase tracking-[0.16em] text-[#706c64] md:hidden" aria-label="Navegación móvil">
       <a class="shrink-0" href="#catalogSection">Colección</a>
       <a class="shrink-0" href="#trustBar">Envíos y pagos</a>
-      <a class="shrink-0" href="https://wa.me/525611717050" target="_blank" rel="noopener noreferrer">INTELIA</a>
+            <a class="shrink-0" href="https://wa.me/525611717050" target="_blank" rel="noopener noreferrer">Atención</a>
     </nav>
   </header>
 
@@ -144,7 +144,7 @@
         <!-- Pestañas de categoría: los botones y la línea dorada indicadora se generan en renderCategories(). -->
         <nav
           id="categoryFilters"
-          class="relative flex gap-8 overflow-x-auto pb-4"
+                              class="relative sticky top-28 z-20 -mx-4 mb-8 flex gap-5 overflow-x-auto border-b border-[#e5dfd6] bg-[#f7f5f1]/95 px-4 py-3 backdrop-blur sm:mx-0 sm:gap-8 sm:border-0 sm:bg-transparent sm:px-0 sm:pb-4 sm:pt-0 sm:backdrop-blur-0 md:static md:z-auto"
           aria-label="Filtrar productos por categoría"
         ></nav>
       </div>
@@ -173,9 +173,9 @@
 
   <footer class="border-t border-[#e5dfd6] bg-[#fbfaf8]">
     <div class="mx-auto flex max-w-[1600px] flex-col items-center justify-between gap-3 px-4 py-8 text-center text-xs text-[#77736c] sm:flex-row sm:px-8 sm:text-left">
-      <p class="font-editorial text-sm uppercase tracking-[0.16em] text-[#514e47]">INTELIA · Piezas para atesorar</p>
+            <p class="font-editorial text-sm uppercase tracking-[0.16em] text-[#514e47]">Joyería · Piezas para atesorar</p>
       <div class="flex items-center gap-5">
-        <p>INTELIA por WhatsApp</p>
+                <p>Atención por WhatsApp</p>
         <button
           id="openAdminButton"
           type="button"
@@ -194,7 +194,7 @@
     target="_blank"
     rel="noopener noreferrer"
     class="fixed bottom-5 right-5 z-30 inline-flex h-14 w-14 items-center justify-center rounded-full bg-[#a43d35] text-white shadow-lg transition hover:scale-105 hover:bg-[#8e302a] focus:outline-none focus:ring-2 focus:ring-[#a43d35] focus:ring-offset-2 sm:bottom-7 sm:right-7"
-    aria-label="Escríbele a INTELIA por WhatsApp"
+        aria-label="Escríbele a la joyería por WhatsApp"
   >
     <i class="fa-brands fa-whatsapp text-2xl" aria-hidden="true"></i>
   </a>
@@ -437,8 +437,19 @@
         "1": 1000
       };
 
+      const imageViewerDialog = document.createElement("dialog");
+      imageViewerDialog.id = "imageViewerDialog";
+      imageViewerDialog.className = "w-[calc(100%-2rem)] max-h-[88vh] max-w-3xl overflow-hidden rounded-sm border border-[#e5dfd6] bg-[#fbfaf8] p-0 text-[#292721] shadow-2xl backdrop:bg-gray-950/60";
+      imageViewerDialog.setAttribute("aria-labelledby", "imageViewerTitle");
+      imageViewerDialog.setAttribute("aria-describedby", "imageViewerCaption");
+      imageViewerDialog.innerHTML = '<div class="relative p-3 sm:p-5"><h2 id="imageViewerTitle" class="sr-only">Foto del producto</h2><button id="closeImageViewerButton" type="button" class="absolute right-3 top-3 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-gray-700 shadow" aria-label="Cerrar foto"><i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i></button><img id="imageViewerImage" class="mx-auto max-h-[72vh] w-full object-contain" alt=""><p id="imageViewerCaption" class="mt-3 text-center text-sm text-[#514e47]"></p></div>';
+      document.body.append(imageViewerDialog);
       const elements = {
         categoryFilters: document.getElementById("categoryFilters"),
+        imageViewerDialog,
+        imageViewerImage: imageViewerDialog.querySelector("#imageViewerImage"),
+        imageViewerCaption: imageViewerDialog.querySelector("#imageViewerCaption"),
+        closeImageViewerButton: imageViewerDialog.querySelector("#closeImageViewerButton"),
         genderToggle: document.getElementById("genderToggle"),
         productsGrid: document.getElementById("productsGrid"),
         productCount: document.getElementById("productCount"),
@@ -479,6 +490,7 @@
         saveProductButton: document.getElementById("saveProductButton")
       };
 
+      elements.categoryFilters.parentElement.after(elements.categoryFilters);
       const moneyFormatter = new Intl.NumberFormat("es-MX", {
         style: "currency",
         currency: "MXN",
@@ -668,6 +680,7 @@
         viewButton.type = "button";
         viewButton.dataset.action = "view";
         viewButton.dataset.imageUrl = product.imagen_url;
+        viewButton.dataset.productName = product.nombre;
         viewButton.className = "absolute right-4 top-4 z-10 inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#1f3a33] text-white shadow transition hover:bg-[#2c5248] focus:outline-none focus:ring-2 focus:ring-[#1f3a33] focus:ring-offset-2";
         viewButton.setAttribute("aria-label", `Ver imagen de ${product.nombre}`);
         viewButton.innerHTML = '<i class="fa-regular fa-eye" aria-hidden="true"></i>';
@@ -754,7 +767,7 @@
           button.type = "button";
           button.dataset.category = category;
           button.setAttribute("aria-pressed", String(isActive));
-          button.className = `shrink-0 whitespace-nowrap pb-1 font-editorial text-2xl transition sm:text-3xl focus:outline-none focus:ring-2 focus:ring-[#292721] focus:ring-offset-2 ${
+                    button.className = `shrink-0 whitespace-nowrap pb-1 font-editorial text-xl transition sm:text-3xl focus:outline-none focus:ring-2 focus:ring-[#292721] focus:ring-offset-2 ${
             isActive ? "text-[#292721]" : "text-[#a39e95] hover:text-[#292721]"
           }`;
           button.textContent = category;
@@ -1308,7 +1321,16 @@
       elements.closeCartButton.addEventListener("click", () => closeCart());
       elements.drawerBackdrop.addEventListener("click", () => closeCart());
       elements.checkoutButton.addEventListener("click", checkoutWhatsApp);
-      elements.retryButton.addEventListener("click", loadProducts);
+            elements.retryButton.addEventListener("click", loadProducts);
+      elements.closeImageViewerButton.addEventListener("click", () => elements.imageViewerDialog.close());
+      elements.imageViewerDialog.addEventListener("click", (event) => {
+        if (event.target === elements.imageViewerDialog) elements.imageViewerDialog.close();
+      });
+      elements.imageViewerDialog.addEventListener("close", () => {
+        elements.imageViewerImage.removeAttribute("src");
+        elements.imageViewerImage.alt = "";
+        elements.imageViewerCaption.textContent = "";
+      });
       elements.openAdminButton.addEventListener("click", () => {
         setAdminNotice("");
         if (typeof elements.adminDialog.showModal === "function") {
@@ -1395,7 +1417,13 @@
         const viewButton = event.target.closest('button[data-action="view"]');
         if (viewButton) {
           const url = viewButton.dataset.imageUrl;
-          if (/^https?:\/\//i.test(url)) window.open(url, "_blank", "noopener");
+                    if (url && (url.startsWith("https://") || url.startsWith("http://"))) {
+            const productName = viewButton.dataset.productName || "Foto del producto";
+            elements.imageViewerImage.src = url;
+            elements.imageViewerImage.alt = productName;
+            elements.imageViewerCaption.textContent = productName;
+            elements.imageViewerDialog.showModal();
+          }
           return;
         }
         const button = event.target.closest('button[data-action="add"]');
